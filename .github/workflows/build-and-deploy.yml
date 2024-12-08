@@ -36,16 +36,16 @@ jobs:
       - name: Install Emscripten
         uses: mymindstorm/setup-emsdk@v14
       - name: CMake Prep Step
-        run: cmake -S NotTerraria -B build -G Ninja -DPLATFORM=Web "-DCMAKE_TOOLCHAIN_FILE=${{ env.EMSDK }}/upstream/emscripten/cmake/Modules/Platform/Emscripten.cmake"
+        run: cmake -S game -B game/build -G Ninja -DPLATFORM=Web "-DCMAKE_TOOLCHAIN_FILE=${{ env.EMSDK }}/upstream/emscripten/cmake/Modules/Platform/Emscripten.cmake"
       - name: CMake Build Step
         run: cmake --build build
       - name: Upload Prep Step
         run: |
           mkdir "pages-files"
-          mv NotTerraria/build/index.html pages-files
-          mv NotTerraria/build/index.js pages-files
-          mv NotTerraria/build/index.data pages-files
-          mv NotTerraria/build/index.wasm pages-files    
+          mv game/build/index.html pages-files
+          mv game/build/index.js pages-files
+          mv game/build/index.data pages-files
+          mv game/build/index.wasm pages-files    
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
