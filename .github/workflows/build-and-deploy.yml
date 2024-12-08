@@ -42,10 +42,10 @@ jobs:
       - name: Upload Prep Step
         run: |
           mkdir "pages-files"
-          mv DreamGame/build/index.html pages-files
-          mv DreamGame/build/index.js pages-files
-          mv DreamGame/build/index.data pages-files
-          mv DreamGame/build/index.wasm pages-files    
+          mv NotTerraria/build/index.html pages-files
+          mv NotTerraria/build/index.js pages-files
+          mv NotTerraria/build/index.data pages-files
+          mv NotTerraria/build/index.wasm pages-files    
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
