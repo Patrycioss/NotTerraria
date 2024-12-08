@@ -1,7 +1,9 @@
-﻿#include <iostream>
-#include <filesystem>
+﻿#include <filesystem>
+#include <iostream>
 
-#include "raylib.h"
+#include <raylib.h>
+
+#include "game.hpp"
 
 #ifndef RESOURCES_PATH
 #define RESOURCES_PATH std::string("resources/")
@@ -12,10 +14,7 @@
 #endif
 
 static void UpdateDrawFrame() {
-	BeginDrawing();
-	ClearBackground(RED);
-	DrawText("Congrats! You created your first window!", 190, 200, 20, LIGHTGRAY);
-	EndDrawing();
+	Game::get_instance()->update();
 }
 
 constexpr int TARGET_FPS = 60;
@@ -25,6 +24,8 @@ int main() {
 	
 	InitWindow(800, 450, "raylib [core] example - basic window");
 	InitAudioDevice();
+
+	Game::get_instance()->start();
 
 
 #if defined(PLATFORM_WEB)
