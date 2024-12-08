@@ -36,9 +36,9 @@ jobs:
       - name: Install Emscripten
         uses: mymindstorm/setup-emsdk@v14
       - name: CMake Prep Step
-        run: cmake -S DreamGame -B DreamGame/build -G Ninja -DPLATFORM=Web "-DCMAKE_TOOLCHAIN_FILE=${{ env.EMSDK }}/upstream/emscripten/cmake/Modules/Platform/Emscripten.cmake"
+        run: cmake -S NotTerraria -B NotTerraria/build -G Ninja -DPLATFORM=Web "-DCMAKE_TOOLCHAIN_FILE=${{ env.EMSDK }}/upstream/emscripten/cmake/Modules/Platform/Emscripten.cmake"
       - name: CMake Build Step
-        run: cmake --build DreamGame/build
+        run: cmake --build NotTerraria/build
       - name: Upload Prep Step
         run: |
           mkdir "pages-files"
