@@ -1,7 +1,4 @@
-﻿#include <filesystem>
-#include <iostream>
-
-#include <raylib.h>
+﻿#include <raylib.h>
 
 #include "game.hpp"
 
@@ -12,30 +9,28 @@
 #if defined(PLATFORM_WEB)
 	#include <emscripten/emscripten.h>
 #endif
+static Game* game_instance;
 
 static void UpdateDrawFrame() {
-	Game::get_instance()->update();
+	game_instance->update();
 }
 
 constexpr int TARGET_FPS = 60;
 
-
 int main() {
-	
 	InitWindow(800, 450, "raylib [core] example - basic window");
 	InitAudioDevice();
 
-	Game::get_instance()->start();
-
+	Game game{};
+	game_instance = &game;
 
 #if defined(PLATFORM_WEB)
 	emscripten_set_main_loop(UpdateDrawFrame,TARGET_FPS,1);
 #else
 
 	SetTargetFPS(TARGET_FPS);
-	
-	while (!WindowShouldClose())
-	{
+
+	while (!WindowShouldClose()) {
 		UpdateDrawFrame();
 	}
 #endif

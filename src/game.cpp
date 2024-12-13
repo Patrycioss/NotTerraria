@@ -2,19 +2,6 @@
 
 #include <raylib.h>
 
-Game* Game::instance{nullptr};
-std::mutex Game::mutex;
-
-
-Game* Game::get_instance() {
-	std::lock_guard lock(mutex);
-	if (instance == nullptr) {
-		instance = new Game();
-	}
-
-	return instance;
-}
-
 void Game::start() {
 	
 }
